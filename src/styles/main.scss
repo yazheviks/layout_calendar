@@ -1,73 +1,19 @@
-$days:
-  "mon" 0 0,
-  "tue" 1 1px,
-  "wed" 2 2px,
-  "thu" 3 3px,
-  "fri" 4 4px,
-  "sat" 5 5px,
-  "sun" 6 6px;
-
-$months: "28" 29, "29" 30, "30" 31, "31" 32;
-
 * {
   box-sizing: border-box;
 }
 
+@import "variables";
+@import "basic";
+@import "formules";
+
 html {
   font-family: Arial, sans-serif;
   font-size: 30px;
+  line-height: $size;
 }
 
 body {
   margin: 0;
 }
 
-.calendar {
-  display: flex;
-  flex-wrap: wrap;
-  width: 707px;
-  div {
-    height: 100px;
-    width: 100px;
-    background-color: #eee;
-    border: 1px solid black;
-    margin-right: 1px;
-    margin-bottom: 1px;
-    &:hover {
-      transition: all 0.5s;
-      position: relative;
-      bottom: 20px;
-      background-color: #ffbfcb;
-      cursor: pointer;
-    }
-  }
-}
 
-@each $day, $num, $px in $days {
-  .calendar-#{$day} {
-    div:first-child {
-      margin-left: $num * 100px + $px;
-    }
-  }
-}
-
-@for $i from 1 to 32 {
-  .calendar {
-    div:nth-child(#{$i}) {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      &::after {
-        content: "#{$i}";
-      }
-    }
-  }
-}
-
-@each $duration, $plus in $months {
-  .calendar-#{$duration} {
-    div:nth-child(n + #{$plus}) {
-      display: none;
-    }
-  }
-}

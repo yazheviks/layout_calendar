@@ -1,0 +1,22 @@
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  width: ($size + $gap) * 7;
+
+  div {
+    height: $size;
+    width: $size;
+    margin-right: $gap;
+    margin-bottom: $gap;
+    background-color: #eee;
+    border: 1px solid black;
+    transition: transform 0.5s;
+    text-align: center;
+    
+    &:hover {
+      transform: translateY(-20px);
+      background-color: #ffbfcb;
+      cursor: pointer;
+    }
+  }
+}

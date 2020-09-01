@@ -1,0 +1,23 @@
+@each $day, $num in $days {
+  .calendar-#{$day} > &:first-child {
+    margin-left: $num * ($size + $gap);
+  }
+}
+
+@for $i from 1 to 32 {
+  .calendar {
+    div:nth-child(#{$i}) {
+      &::after {
+        content: "#{$i}";
+      }
+    }
+  }
+}
+
+@each $duration, $plus in $months {
+  .calendar-#{$duration} {
+    div:nth-child(n + #{$duration} + 1) {
+      display: none;
+    }
+  }
+}
